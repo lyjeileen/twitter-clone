@@ -1,9 +1,20 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import { useSession } from 'next-auth/react';
+//useRouter can access router
+import { useRouter } from 'next/router';
 
 export default function Home() {
-  return <p>Hello</p>;
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  if (status === 'loading') {
+    return null;
+  }
+
+  //session is null if user is not logged in
+  if (session) {
+    //navigate to home
+    router.push('/home');
+  }
+
+  return <a href="/api/auth/signin">login</a>;
 }
