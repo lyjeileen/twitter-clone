@@ -8,5 +8,9 @@ export default function Home() {
     return <p>...</p>;
   }
 
-  return <div>{session ? <NewTweet /> : <p>You are not logged in 😞</p>}</div>;
+  return (
+    <div className="p-5">
+      {session ? <NewTweet /> : <p>You are not logged in 😞</p>}
+    </div>
+  );
 }

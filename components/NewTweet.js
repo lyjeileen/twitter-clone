@@ -10,31 +10,13 @@ export default function NewTweet() {
 
   return (
     <>
-      <Box
-        component="form"
-        //add padding
-        sx={{
-          '& .MuiTextField-root': { p: 3 },
-        }}
-        noValidate
-        autoComplete="off"
-      >
+      <Box component="form" noValidate autoComplete="off">
         <TextField
           fullWidth
           id="outlined-multiline-flexible"
           label="What are you humming about?"
           multiline
           maxRows={4}
-          //add margin becuase of padding on Box
-          sx={{
-            '& label': {
-              marginLeft: 3,
-              marginTop: 3,
-              '&.Mui-focused': {
-                marginLeft: 3,
-              },
-            },
-          }}
         />
       </Box>
     </>
