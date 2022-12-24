@@ -87,6 +87,7 @@ body {
 }
 
 body {
+  padding: 8px;
   color: rbg(--foreground-rgb);
   background: linear-gradient(#fee2e2, #f9a8d4, #fda4af);
 }
