@@ -39,7 +39,7 @@ export default function NewTweet() {
             method: 'POST',
           });
 
-          router.reload(window.location.pathname);
+          router.replace(router.asPath);
         }}
       >
         <TextField
