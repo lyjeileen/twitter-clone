@@ -24,7 +24,16 @@ export default function NewTweet() {
           if (!content) {
             setError('Type something before you tweet');
           }
-          alert(content);
+
+          fetch('api/tweet', {
+            body: JSON.stringify({
+              content,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            method: 'POST',
+          });
         }}
       >
         <TextField
