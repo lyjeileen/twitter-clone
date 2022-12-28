@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
   const session = await getSession({ req });
 
+  //find user using email address from session
   const user = await prisma.user.findUnique({
     where: {
       email: session.user.email,
