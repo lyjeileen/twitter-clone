@@ -18,6 +18,10 @@ export default function Home({ tweets }) {
     router.push('/');
   }
 
+  if (!session.user.name) {
+    router.push('/setup');
+  }
+
   return (
     <div className="p-5">
       <NewTweet />
