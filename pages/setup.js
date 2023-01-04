@@ -23,15 +23,11 @@ export default function Setup() {
   return (
     <Box
       sx={{ '& > :not(style)': { m: 1 } }}
+      component="form"
       className="m-auto flex flex-col w-fit"
       onSubmit={async (e) => {
         e.preventDefault();
-
-        if (!session.user.name) {
-          setError('Type something before you tweet');
-        }
-
-        await fetch('api/user', {
+        await fetch('/api/setup', {
           body: JSON.stringify({
             name,
           }),

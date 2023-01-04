@@ -18,7 +18,7 @@ export default function Home({ tweets }) {
     router.push('/');
   }
 
-  if (!session.user.name) {
+  if (session && !session.user.name) {
     router.push('/setup');
   }
 
