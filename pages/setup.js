@@ -48,7 +48,7 @@ export default function Setup() {
             router.push('/home');
           } else {
             const error = await response.json();
-            console.log(error);
+
             if (error) {
               setError(error.message);
             }

@@ -6,7 +6,6 @@ export default async function handler(req, res) {
   const session = await getSession({ req });
   console.log(session);
   if (!session) return res.end();
-  console.log('body', req.body);
   if (req.method === 'POST') {
     try {
       await prisma.user.update({
