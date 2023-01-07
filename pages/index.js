@@ -1,4 +1,6 @@
 import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+
 //useRouter can access router
 import { useRouter } from 'next/router';
 
@@ -16,5 +18,5 @@ export default function Home() {
     router.push('/home');
   }
 
-  return <a href="/api/auth/signin">login</a>;
+  return <Link href="/api/auth/signin">login</Link>;
 }
