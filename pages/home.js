@@ -14,12 +14,15 @@ export default function Home({ tweets }) {
     return null;
   }
 
+  //go to login if no session
   if (!session) {
     router.push('/');
   }
 
+  //if no username, redirect to setup
   if (session && !session.user.name) {
     router.push('/setup');
+    return null;
   }
 
   return (
