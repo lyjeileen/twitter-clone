@@ -11,7 +11,7 @@ import Alert from '@mui/material/Alert';
 
 export default function Setup() {
   const { data: session, status } = useSession();
-  const [username, setUsername] = useState('');
+  const [name, setName] = useState('');
   const [error, setError] = useState();
   const router = useRouter();
 
@@ -30,12 +30,12 @@ export default function Setup() {
       onSubmit={async (e) => {
         e.preventDefault();
 
-        if (!username) {
-          setError('Username cannot be empty');
+        if (!name) {
+          setError('Name cannot be empty');
         } else {
           let response = await fetch('/api/setup', {
             body: JSON.stringify({
-              username,
+              name,
             }),
             headers: {
               'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ export default function Setup() {
           });
 
           if (response.status === 200) {
-            session.user.name = username;
+            session.user.name = name;
             router.push('/home');
           } else {
             const error = await response.json();
@@ -57,10 +57,10 @@ export default function Setup() {
       }}
     >
       {error && <Alert severity="warning">{error}</Alert>}
-      <p className="pt-3">Enter a username</p>
+      <p className="pt-3">Enter your name</p>
       <TextField
         id="input-with-icon-textfield"
-        label="Username"
+        label="Name"
         InputProps={{
           startAdornment: (
             <InputAdornment position="start">
@@ -69,8 +69,8 @@ export default function Setup() {
           ),
         }}
         variant="standard"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
       <div>
         <Button type="submit" variant="contained" className="text-[#ec4899]">
