@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+//Add cloudflare to display images from this domain
+module.exports = {
   reactStrictMode: true,
-}
-
-module.exports = nextConfig
+  images: {
+    domains: ['cloudflare-ipfs.com', 'localhost'],
+  },
+};
