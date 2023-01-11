@@ -3,19 +3,19 @@ import timeago from 'lib/timeago';
 import Image from 'next/image';
 export default function Tweet({ tweet }) {
   return (
-    <>
-      <div className="flex items-center">
+    <div className="flex border-solid p-2 my-8 border-2 border-red-400 rounded-tl-lg rounded-br-lg">
+      <div className="mr-2">
         {tweet.author.image ? (
           <Image
-            className="rounded-full mr-2"
+            className="rounded-full ring-2 ring-red-400"
             src={tweet.author.image}
             alt={'Author name'}
-            width={30}
-            height={30}
+            width={40}
+            height={40}
           />
         ) : (
           //show a placeholder icon for the user profile when there is no custom image available
-          <div className="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 mr-2">
+          <div className="relative w-8 h-8 overflow-hidden bg-gray-100 rounded-full ring-2 ring-red-400 dark:bg-gray-600 ">
             <svg
               className="absolute w-10 h-10 text-gray-400 -left-1"
               fill="currentColor"
@@ -30,10 +30,14 @@ export default function Tweet({ tweet }) {
             </svg>
           </div>
         )}
-        {tweet.author.name}
       </div>
-      <div>{tweet.content}</div>
-      <div>{timeago.format(new Date(tweet.createdAt))}</div>
-    </>
+      <div>
+        <div className="mb-1 font-bold text-red-900">{tweet.author.name}</div>
+        <div className="mb-1">{tweet.content}</div>
+        <div className="text-gray-800 text-xs">
+          {timeago.format(new Date(tweet.createdAt))}
+        </div>
+      </div>
+    </div>
   );
 }
