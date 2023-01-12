@@ -79,14 +79,14 @@
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
+html {
+  overflow-y: scroll;
   overflow-x: hidden;
-  height: 100%;
+  max-width: 100vw;
 }
 
 body {
+  height: 100%;
   padding: 8px;
   color: rbg(--foreground-rgb);
   background: linear-gradient(#fee2e2, #f9a8d4, #fda4af);
