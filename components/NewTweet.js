@@ -53,7 +53,7 @@ export default function NewTweet() {
           onChange={(e) => setContent(e.target.value)}
         />
         <div className="flex justify-end">
-          <Button type="submit" variant="contained" className="text-[#ec4899]">
+          <Button type="submit" variant="contained" className="text-[#991b1b]">
             Tweet
           </Button>
         </div>
