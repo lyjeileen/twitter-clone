@@ -1,6 +1,8 @@
 import timeago from 'lib/timeago';
 //next/image has better performance than html image
 import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Tweet({ tweet }) {
   return (
     <div className="flex border-solid p-2 my-8 border-2 border-red-400 rounded-lg">
@@ -33,7 +35,9 @@ export default function Tweet({ tweet }) {
         )}
       </div>
       <div>
-        <div className="mb-1 font-bold text-red-900">{tweet.author.name}</div>
+        <div className="mb-1 font-bold text-red-900">
+          <Link href={`/${tweet.author.name}`}>{tweet.author.name}</Link>
+        </div>
         <div className="mb-1">{tweet.content}</div>
         <div className="text-gray-800 text-xs">
           {timeago.format(new Date(tweet.createdAt))}
