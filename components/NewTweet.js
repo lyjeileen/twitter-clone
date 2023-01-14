@@ -6,6 +6,18 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
+import { alpha, styled } from '@mui/material/styles';
+
+const CssTextField = styled(TextField)({
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      borderColor: '#F87171',
+    },
+    '&:hover fieldset': {
+      text: '#EF4444',
+    },
+  },
+});
 
 export default function NewTweet() {
   const { data: session } = useSession();
@@ -42,16 +54,17 @@ export default function NewTweet() {
           router.replace(router.asPath);
         }}
       >
-        <TextField
+        <CssTextField
           fullWidth
-          id="outlined-multiline-flexible"
           label="What are you humming about?"
+          id="outlined-multiline-flexible"
           margin="normal"
           multiline
           maxRows={4}
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
+
         <div className="flex justify-end">
           <Button
             type="submit"
