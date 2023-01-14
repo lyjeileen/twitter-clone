@@ -14,7 +14,7 @@ const CssTextField = styled(TextField)({
       borderColor: '#F87171',
     },
     '&:hover fieldset': {
-      text: '#EF4444',
+      borderColor: '#EF4444',
     },
   },
 });
