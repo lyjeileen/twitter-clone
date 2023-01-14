@@ -1,10 +1,13 @@
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
-
 //useRouter can access router
 import { useRouter } from 'next/router';
+import Button from '@mui/material/Button';
+import { getTweets } from 'lib/data';
+import prisma from 'lib/prisma';
+import Tweets from 'components/Tweets';
 
-export default function Home() {
+export default function Index({ tweets }) {
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -18,5 +21,29 @@ export default function Home() {
     router.push('/home');
   }
 
-  return <Link href="/api/auth/signin">login</Link>;
+  return (
+    <>
+      <div className="border-solid border-2 border-red-100 rounded-xl p-4 text-center bg-red-200 max-w-md m-auto">
+        <div className="text-xl my-6">Join the conversation!</div>
+        <div>
+          <Button variant="contained" className="text-[#991b1b]">
+            <Link href="/api/auth/signin">login</Link>
+          </Button>
+        </div>
+      </div>
+      <Tweets tweets={tweets} />
+    </>
+  );
 }
+
+export const getServerSideProps = async () => {
+  const take = 4;
+  let tweets = await getTweets(prisma, take);
+  tweets = JSON.parse(JSON.stringify(tweets));
+
+  return {
+    props: {
+      tweets,
+    },
+  };
+};
