@@ -57,7 +57,7 @@ export default function Setup() {
       }}
     >
       {error && <Alert severity="warning">{error}</Alert>}
-      <p className="pt-3">Enter your name</p>
+      <p className="pt-3 text-[24px]">Enter your name</p>
       <TextField
         id="input-with-icon-textfield"
         label="Name"
@@ -73,7 +73,11 @@ export default function Setup() {
         onChange={(e) => setName(e.target.value)}
       />
       <div>
-        <Button type="submit" variant="contained" className="text-[#ec4899]">
+        <Button
+          type="submit"
+          variant="contained"
+          className="text-[#991b1b] font-bold hover:bg-red-200"
+        >
           Confirm
         </Button>
       </div>
