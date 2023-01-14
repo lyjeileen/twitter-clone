@@ -2,6 +2,9 @@ import timeago from 'lib/timeago';
 //next/image has better performance than html image
 import Image from 'next/image';
 import Link from 'next/link';
+import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShareIcon from '@mui/icons-material/Share';
 
 export default function Tweet({ tweet }) {
   return (
@@ -36,7 +39,7 @@ export default function Tweet({ tweet }) {
             </div>
           )}
         </div>
-        <div>
+        <div className="flex-auto">
           <div className="mb-1 font-bold text-red-900">
             <Link href={`/${tweet.author.name}`}>
               <p className="hover:underline">{tweet.author.name}</p>
@@ -44,8 +47,13 @@ export default function Tweet({ tweet }) {
           </div>
 
           <div className="mb-1">{tweet.content}</div>
-          <div className="text-gray-800 text-xs">
+          <div className="text-gray-800 text-xs flex justify-between">
             {timeago.format(new Date(tweet.createdAt))}
+            <div className="flex justify-evenly min-w-[88px] text-red-400 ">
+              <FavoriteBorderIcon className="text-[16px] hover:text-red-800" />
+              <ChatBubbleOutlineIcon className="text-[16px] hover:text-red-800" />
+              <ShareIcon className="text-[16px] hover:text-red-800" />
+            </div>
           </div>
         </div>
       </div>
