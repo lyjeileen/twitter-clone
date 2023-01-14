@@ -26,7 +26,10 @@ export default function Index({ tweets }) {
       <div className="border-solid border-2 border-red-100 rounded-xl p-4 text-center bg-red-200 max-w-md m-auto">
         <div className="text-xl my-6">Join the conversation!</div>
         <div>
-          <Button variant="contained" className="text-[#991b1b]">
+          <Button
+            variant="contained"
+            className="text-[#991b1b] font-bold hover:bg-red-200"
+          >
             <Link href="/api/auth/signin">login</Link>
           </Button>
         </div>

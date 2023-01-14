@@ -1,5 +1,4 @@
 import { Roboto } from '@next/font/google';
-
 import { createTheme } from '@mui/material/styles';
 
 const roboto = Roboto({
@@ -12,8 +11,9 @@ const roboto = Roboto({
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#ec4899',
+      main: '#F87171',
     },
+    secondary: { main: '#9A3412' },
   },
   typography: {
     fontFamily: roboto.style.fontFamily,

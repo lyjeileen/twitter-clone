@@ -3,12 +3,12 @@ import Button from '@mui/material/Button';
 export default function Utils() {
   return (
     <div className="m-8">
-      <h2 className="text-xl mb-2">Utils</h2>
+      <h2 className="text-xl mb-2 font-bold">Utils</h2>
       <div>
         <Button
           type="submit"
           variant="contained"
-          className="text-[#ec4899] my-2"
+          className="my-4 text-[#991b1b] font-bold hover:bg-red-200"
           onClick={async () => {
             await fetch('/api/utils', {
               body: JSON.stringify({
@@ -28,7 +28,7 @@ export default function Utils() {
         <Button
           type="submit"
           variant="contained"
-          className="text-[#ec4899] my-2"
+          className="my-4 text-[#991b1b] font-bold hover:bg-red-200"
           onClick={async () => {
             await fetch('/api/utils', {
               body: JSON.stringify({
@@ -47,7 +47,7 @@ export default function Utils() {
       <Button
         type="submit"
         variant="contained"
-        className="text-[#ec4899] my-2"
+        className="my-4 text-[#991b1b] font-bold hover:bg-red-200"
         onClick={async () => {
           await fetch('/api/utils', {
             body: JSON.stringify({
