@@ -79,11 +79,15 @@ export default function Tweet({ tweet }) {
         </Link>
         <div className="text-gray-800 text-xs flex justify-between">
           {timeago.format(new Date(tweet.createdAt))}
-          <div className="flex justify-evenly min-w-[88px] text-red-400">
-            <FavoriteBorderIcon className="text-[16px] hover:text-red-800" />
-            <ChatBubbleOutlineIcon className="text-[16px] hover:text-red-800" />
-            <ShareIcon className="text-[16px] hover:text-red-800" />
-          </div>
+
+          {/* only show icons if logged in */}
+          {session && session.user.email && (
+            <div className="flex justify-evenly min-w-[88px] text-red-400">
+              <FavoriteBorderIcon className="text-[16px] hover:text-red-800" />
+              <ChatBubbleOutlineIcon className="text-[16px] hover:text-red-800" />
+              <ShareIcon className="text-[16px] hover:text-red-800" />
+            </div>
+          )}
         </div>
       </div>
     </div>
