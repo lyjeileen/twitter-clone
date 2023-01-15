@@ -39,19 +39,22 @@ export default function NewTweet() {
 
           if (!content) {
             setError('Type something before you tweet');
+          } else {
+            await fetch('api/tweet', {
+              body: JSON.stringify({
+                content,
+              }),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              method: 'POST',
+            });
+
+            //remove content and error if post successfully
+            setContent('');
+            setError('');
+            router.replace(router.asPath);
           }
-
-          await fetch('api/tweet', {
-            body: JSON.stringify({
-              content,
-            }),
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            method: 'POST',
-          });
-
-          router.replace(router.asPath);
         }}
       >
         <CssTextField
