@@ -5,26 +5,9 @@ import prisma from 'lib/prisma';
 import { getTweet } from 'lib/data';
 import Tweet from 'components/Tweet';
 
-export default function singleTweet({ tweet }) {
-  return (
-    <>
-      {tweet ? (
-        <div>
-          <Tweet tweet={tweet} />
-          <Button
-            type="submit"
-            variant="contained"
-            className="text-[#991b1b] hover:bg-red-200"
-          >
-            <DeleteForeverIcon />
-            Delete
-          </Button>
-        </div>
-      ) : (
-        <p>Tweet not exist</p>
-      )}
-    </>
-  );
+export default function SingleTweet({ tweet }) {
+  if (!tweet) return <p>Tweet not exist</p>;
+  return <Tweet tweet={tweet} />;
 }
 
 export const getServerSideProps = async ({ params }) => {
