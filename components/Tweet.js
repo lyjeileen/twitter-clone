@@ -17,6 +17,7 @@ export default function Tweet({ tweet }) {
   const { data: session } = useSession();
   const router = useRouter();
   const [newComment, setNewComment] = useState(false);
+  const comments = tweet.comments;
 
   return (
     <div
@@ -59,9 +60,15 @@ export default function Tweet({ tweet }) {
             />
           )}
         </div>
-        <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
+        {/* no link for comments */}
+        {tweet.parent ? (
           <div className="mb-1">{tweet.content}</div>
-        </Link>
+        ) : (
+          <Link href={`/${tweet.author.name}/status/${tweet.id}`}>
+            <div className="mb-1">{tweet.content}</div>
+          </Link>
+        )}
+
         <div className="text-gray-800 text-xs flex justify-between">
           {timeago.format(new Date(tweet.createdAt))}
 
@@ -79,8 +86,9 @@ export default function Tweet({ tweet }) {
             </div>
           )}
         </div>
+        {/* only show comment section after clicking the comment button */}
         {newComment && <NewComment tweet={tweet} />}
-        {tweet.comments && newComment && <Tweets tweets={tweet.comments} />}
+        {comments && newComment && <Tweets tweets={comments} />}
       </div>
     </div>
   );
