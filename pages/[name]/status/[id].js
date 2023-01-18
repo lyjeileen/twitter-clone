@@ -1,12 +1,13 @@
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import Button from '@mui/material/Button';
-
 import prisma from 'lib/prisma';
 import { getTweet } from 'lib/data';
 import Tweet from 'components/Tweet';
+import { router } from 'next/router';
 
 export default function SingleTweet({ tweet }) {
   if (!tweet) return <p>Tweet not exist</p>;
+  if (typeof window !== 'undefined' && tweet.parent) {
+    router.push(`/${tweet.parentData.author.name}/status/${tweet.parent}`);
+  }
   return <Tweet tweet={tweet} />;
 }
 
