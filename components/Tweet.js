@@ -11,13 +11,19 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import NewComment from 'components/NewComment';
 import Avatar from 'components/Avatar';
+import Tweets from 'components/Tweets';
 
 export default function Tweet({ tweet }) {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const router = useRouter();
   const [newComment, setNewComment] = useState(false);
+
   return (
-    <div className="flex border-solid p-2 my-8 border-2 border-red-400 rounded-lg hover:shadow-md">
+    <div
+      className={`flex p-4 my-8 border-solid border-red-400 hover:shadow-md ${
+        tweet.parent ? 'border-b-2' : 'border-2 rounded-lg'
+      } `}
+    >
       {/* use flex-shrink-0 to avoid the change of avatar size in small screen. flex in the outer box could shrink avatar */}
       <div className="mr-2 flex-shrink-0">
         <Avatar image={tweet.author.image} />
@@ -67,11 +73,14 @@ export default function Tweet({ tweet }) {
                 onClick={() => setNewComment(!newComment)}
                 className="text-[16px] hover:text-red-800"
               />
-              <ShareIcon className="text-[16px] hover:text-red-800" />
+              {!tweet.parent && (
+                <ShareIcon className="text-[16px] hover:text-red-800" />
+              )}
             </div>
           )}
         </div>
         {newComment && <NewComment tweet={tweet} />}
+        {tweet.comments && newComment && <Tweets tweets={tweet.comments} />}
       </div>
     </div>
   );

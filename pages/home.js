@@ -38,10 +38,20 @@ export const getServerSideProps = async () => {
   //convert createdAt timestamp to string format(getServerSideProps returns data as JSON-encoded, JSON doesn't support Date objects)
   tweets = JSON.parse(JSON.stringify(tweets));
 
+  //put comments under tweets
+  const filteredTweets = tweets.filter((tweet) => !tweet.parent);
+  const comments = tweets.filter((tweet) => tweet.parent);
+  const result = filteredTweets.map((tweet) => {
+    return {
+      ...tweet,
+      comments: comments.filter((c) => c.parent === tweet.id),
+    };
+  });
+
   return {
     //pass tweets to Home as props
     props: {
-      tweets,
+      tweets: result,
     },
   };
 };
