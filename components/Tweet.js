@@ -1,7 +1,6 @@
 import timeago from 'lib/timeago';
 //next/image has better performance than html image
 import { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
