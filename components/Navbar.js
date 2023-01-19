@@ -11,11 +11,13 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const router = useRouter();
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -80,7 +82,15 @@ export default function Navbar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography
+                      textAlign="center"
+                      onClick={() => {
+                        setting === 'Profile' &&
+                          router.push(`/${session.user.name}`);
+                      }}
+                    >
+                      {setting}
+                    </Typography>
                   </MenuItem>
                 ))}
               </Menu>
