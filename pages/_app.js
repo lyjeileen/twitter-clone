@@ -5,6 +5,7 @@ import { CacheProvider } from '@emotion/react';
 import { theme } from '../config/theme';
 import createEmotionCache from '../config/createEmotionCache';
 import { SessionProvider } from 'next-auth/react';
+import Navbar from 'components/Navbar';
 
 import '../styles/globals.css';
 
@@ -21,7 +22,10 @@ export default function App(props) {
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
         <SessionProvider session={pageProps.session}>
-          <Component {...pageProps} />
+          <Navbar />
+          <main className="p-5">
+            <Component {...pageProps} />
+          </main>
         </SessionProvider>
       </ThemeProvider>
     </CacheProvider>
