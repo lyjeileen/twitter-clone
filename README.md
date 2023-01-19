@@ -25,11 +25,11 @@ A twitter clone with basic functions like login, send tweets, comment, view twee
 
 - Users can view or write comments for tweets.
 
-  !["Users can view or write comments for tweets."](/client/public/images/comment.gif)
+  !["Users can view or write comments for tweets."](/public/images/comment.gif)
 
 - Users can check user page or single tweet page.
 
-  !["Users can check user page or single tweet page."](/client/public/images/redirect.gif)
+  !["Users can check user page or single tweet page."](/public/images/redirect.gif)
 
 ## Getting Started
 
