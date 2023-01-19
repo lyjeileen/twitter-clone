@@ -23,6 +23,7 @@ export const getServerSideProps = async ({ params }) => {
   if (userTweets.length !== 0) {
     userTweets = JSON.parse(JSON.stringify(userTweets));
   }
+
   return {
     props: {
       name: params.name,
